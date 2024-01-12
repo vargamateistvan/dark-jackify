@@ -9,4 +9,5 @@ export default defineConfig({
     alias: [{ find: "@", replacement: resolve(__dirname, "./src") }],
   },
   assetsInclude: ["**/*.html"],
+  base: "/dark-jackify/",
 });

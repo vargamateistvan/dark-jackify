@@ -2,17 +2,21 @@
   "name": "dark-jackify",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://{vargamateistvan}.github.io/{dark-jackify}/",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "vue": "^3.3.11"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.5.2",
+    "gh-pages": "^6.1.1",
     "sass": "^1.69.7",
     "typescript": "^5.2.2",
     "vite": "^5.0.8",
