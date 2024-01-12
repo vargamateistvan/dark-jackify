@@ -164,6 +164,8 @@ export default {
       if (this.isBonusGameWins) {
         return alert(`Nyertél 1,000 Ft-ot!`);
       }
+
+      return alert("Sajnos most nem nyertél");
     },
   },
   mounted() {
