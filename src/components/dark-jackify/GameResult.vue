@@ -259,7 +259,7 @@ export default {
     position: relative;
 
     &-numbers {
-      width: 135px;
+      width: 145px;
       height: 117px;
       background: #e9ebec;
       position: absolute;
