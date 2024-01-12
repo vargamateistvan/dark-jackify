@@ -162,7 +162,7 @@ export default {
       }
 
       if (this.isBonusGameWins) {
-        return alert(`Nyertél 1,000 Ft-ot!`);
+        return alert(`Nyertél 1,000 Ft-ot a Bónusz játékkal!`);
       }
 
       return alert("Sajnos most nem nyertél");
