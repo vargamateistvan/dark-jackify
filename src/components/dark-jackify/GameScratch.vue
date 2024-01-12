@@ -158,7 +158,7 @@ export default {
 <style lang="scss">
 #dark-jackify-game {
   width: 397px;
-  height: 253px;
+  height: 430px;
   border-bottom-left-radius: 165px;
   border-bottom-right-radius: 165px;
   z-index: 2;
