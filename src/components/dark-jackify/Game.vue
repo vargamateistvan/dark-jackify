@@ -26,7 +26,6 @@ export default {
       isPlayerWins: false,
       bonusNumbers: [],
       prize: null,
-      prizes: [500, 1000, 5000, 10000, 10000],
     };
   },
   components: { GameResult, GameScratch },
@@ -37,13 +36,13 @@ export default {
     },
   },
   methods: {
-    generateNumbers(percent) {
+    generateNumbers() {
       const playerNumbers = [];
       const dealerNumber = Math.floor(Math.random() * 13) + 9; // Generates a random integer between 9 and 21 for the dealer
+      const isSmallerThanDealerNumber = Math.random() < 0.7;
 
       for (let i = 0; i < 4; i++) {
         const randomNumber = Math.floor(Math.random() * 20) + 2; // Generates a random integer between 2 and 21 for the player
-        const isSmallerThanDealerNumber = Math.random() < 1 - percent;
 
         // If 30% chance, make sure the number is smaller than the dealer number
         const generatedNumber = isSmallerThanDealerNumber
@@ -56,7 +55,7 @@ export default {
       return { playerNumbers: Array.from(playerNumbers), dealerNumber };
     },
     isDealerWin(playerNumbers, dealerNumber) {
-      return playerNumbers.every((num) => dealerNumber + 1 > num);
+      return playerNumbers.every((num) => num <= dealerNumber);
     },
     generateBonusGameNumbers() {
       const numbers = [];
@@ -85,59 +84,50 @@ export default {
       return Math.floor(Math.random() * (max - 1)) + min;
     },
     getPrize() {
-      if (this.isPlayerWins) {
-        let prize = 500;
-        const chance = Math.random();
+      let prize = 500;
+      const chance = Math.random();
 
-        if (chance < 0.25) {
-          prize = 1000;
-        }
-
-        if (chance < 0.15) {
-          prize = 5000;
-        }
-
-        if (chance < 0.1) {
-          prize = 10000;
-        }
-
-        if (chance < 0.05) {
-          prize = 100000;
-        }
-
-        this.prize = prize;
-      } else {
-        this.prize = this.prizes[this.generatedNumber(0, 4)];
+      if (chance < 0.25) {
+        prize = 1000;
       }
+
+      if (chance < 0.15) {
+        prize = 5000;
+      }
+
+      if (chance < 0.1) {
+        prize = 10000;
+      }
+
+      if (chance < 0.05) {
+        prize = 100000;
+      }
+
+      this.prize = prize;
     },
     initGame() {
-      const { playerNumbers, dealerNumber } = this.generateNumbers(0.3);
+      const { playerNumbers, dealerNumber } = this.generateNumbers();
 
-      console.log(
-        "DEALER NUMBER",
-        dealerNumber,
-        "PLAYER NUMBERS",
-        playerNumbers
-      );
-
+      this.isPlayerWins = !this.isDealerWin(playerNumbers, dealerNumber);
       this.dealerNumber = dealerNumber;
       this.playerNumbers = playerNumbers;
 
-      this.isPlayerWins = !this.isDealerWin(
-        this.playerNumbers,
-        this.dealerNumber
-      );
-
       this.bonusNumbers = this.generateBonusGameNumbers();
-
       this.getPrize();
 
-      console.log("Bonus numbers", this.bonusNumbers);
-      console.log("Prize", this.prize);
-
       // Display results
-      console.log(this.isPlayerWins ? "Player wins!" : "Dealer wins!");
-      console.log(this.isBonusGameWins ? "Bonus game wins" : "Bonus game lost");
+      console.log(
+        this.isPlayerWins ? "Player wins!" : "Dealer wins!",
+        "Dealer number",
+        this.dealerNumber,
+        "Player numbers",
+        this.playerNumbers
+      );
+      console.log(
+        this.isBonusGameWins ? "Bonus game wins" : "Bonus game lost",
+        this.bonusNumbers
+      );
+      console.log("Prize", this.prize);
     },
   },
   mounted() {
