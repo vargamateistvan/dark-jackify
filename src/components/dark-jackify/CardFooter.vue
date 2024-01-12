@@ -18,6 +18,6 @@ export default {};
   user-select: none;
 
   margin-left: 15px;
-  margin-top: -225px;
+  margin-top: -255px;
 }
 </style>
