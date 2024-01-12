@@ -53,12 +53,6 @@ export default {
 
       return { playerNumbers: Array.from(playerNumbers), dealerNumber };
     },
-    getDealerWin(playerNumbers, dealerNumber) {
-      return playerNumbers.every((num) => num <= dealerNumber);
-    },
-    getBonusGameWin() {
-      return this.bonusNumbers.reduce((acc, num) => acc + num, 0) === 21;
-    },
     generateBonusGameNumbers() {
       const numbers = [];
 
@@ -67,7 +61,7 @@ export default {
         numbers.push(randomNumber);
       }
 
-      // Check if 50% chance for the sum to equal 21
+      // Check if 50% chance for the sum to equal 21 if a player lost the main game
       if (!this.isPlayerWins && Math.random() < 0.5) {
         const adjustedIndex = Math.floor(Math.random() * 3);
         const difference = 21 - numbers.reduce((sum, num) => sum + num, 0);
@@ -76,8 +70,8 @@ export default {
 
       return numbers;
     },
-    generatedNumber(min = 2, max = 21) {
-      return Math.floor(Math.random() * (max - 1)) + min;
+    getDealerWin(playerNumbers, dealerNumber) {
+      return playerNumbers.every((num) => num <= dealerNumber);
     },
     getPrize() {
       let prize = 500;
