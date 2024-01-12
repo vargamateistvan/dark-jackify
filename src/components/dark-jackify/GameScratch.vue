@@ -1,5 +1,13 @@
 <template>
-  <canvas id="dark-jackify-game"></canvas>
+  <canvas
+    id="dark-jackify-game"
+    @mousedown="startScratch"
+    @mousemove="scratch"
+    @mouseup="stopScratch"
+    @touchstart="startScratch"
+    @touchmove="scratch"
+    @touchend="stopScratch"
+  ></canvas>
 </template>
 
 <script>
@@ -47,17 +55,6 @@ export default {
       });
 
       tempImg.src = svgObjectUrl;
-    },
-    initCanvasEventListeners() {
-      // Event listeners for mouse/touch interactions
-      this.canvas.addEventListener("mousedown", this.startScratch);
-      this.canvas.addEventListener("touchstart", this.startScratch);
-
-      this.canvas.addEventListener("mousemove", this.scratch);
-      this.canvas.addEventListener("touchmove", this.scratch);
-
-      this.canvas.addEventListener("mouseup", this.stopScratch);
-      this.canvas.addEventListener("touchend", this.stopScratch);
     },
     initBrush() {
       this.brush = new Image();
@@ -167,7 +164,6 @@ export default {
   mounted() {
     this.renderHTMLToCanvas();
     this.initBrush();
-    this.initCanvasEventListeners();
   },
 };
 </script>
