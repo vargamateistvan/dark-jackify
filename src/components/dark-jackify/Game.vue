@@ -13,7 +13,56 @@
 import GameResult from "./GameResult.vue";
 import GameScratch from "./GameScratch.vue";
 
-export default {};
+export default {
+  data() {
+    return {
+      dealerNumber: null,
+      playerNumbers: [],
+    };
+  },
+  components: { GameResult, GameScratch },
+  methods: {
+    generateNumbers(percent) {
+      const playerNumbers = [];
+      const dealerNumber = Math.floor(Math.random() * 20) + 2; // Random number between 2 and 21 for comparison
+
+      for (let i = 0; i < 4; i++) {
+        const randomNumber = Math.floor(Math.random() * 20) + 2; // Generates a random integer between 2 and 21 (inclusive)
+
+        // 30% chance of being less than the comparison number
+        const generatedNumber =
+          Math.random() < percent
+            ? Math.floor(Math.random() * dealerNumber) + 2
+            : randomNumber;
+
+        playerNumbers.push(generatedNumber);
+      }
+
+      return { playerNumbers, dealerNumber };
+    },
+    isDealerNumberBigger(playerNumbers, dealerNumber) {
+      return playerNumbers.every((num) => dealerNumber > num);
+    },
+    initGame() {
+      const { playerNumbers, dealerNumber } = this.generateNumbers(0.3);
+
+      console.log("DDD", dealerNumber, "PPP", playerNumbers);
+
+      this.dealerNumber = dealerNumber;
+      this.playerNumbers = playerNumbers;
+
+      // Display results
+      console.log(
+        this.isDealerNumberBigger(this.playerNumbers, this.dealerNumber)
+          ? "Player wins!"
+          : "Dealer wins!"
+      );
+    },
+  },
+  mounted() {
+    this.initGame();
+  },
+};
 </script>
 
 <style lang="scss">
@@ -46,7 +95,7 @@ export default {};
   }
 
   #dark-jackify-game {
-    width: 382px;
+    width: 397px;
     height: 253px;
     border-bottom-left-radius: 165px;
     border-bottom-right-radius: 165px;

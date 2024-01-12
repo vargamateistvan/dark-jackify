@@ -4,34 +4,39 @@
       <span class="dark-jackify-card-container-game-result-dealer-prize"
         >15.000.000</span
       ><br />
-      <span class="dark-jackify-card-container-game-result-dealer-number"
-        >17</span
-      >
+      <span class="dark-jackify-card-container-game-result-dealer-number">{{
+        dealerNumber
+      }}</span>
     </div>
     <div class="dark-jackify-card-container-game-result-player">
       <span
         class="dark-jackify-card-container-game-result-player-number dark-jackify-card-container-game-result-player-number-1"
-        >4</span
+        >{{ playerNumbers[0] }}</span
       >
       <span
         class="dark-jackify-card-container-game-result-player-number dark-jackify-card-container-game-result-player-number-2"
-        >13</span
+        >{{ playerNumbers[1] }}</span
       >
       <span class="dark-jackify-card-container-game-result-player-text"></span>
       <span
         class="dark-jackify-card-container-game-result-player-number dark-jackify-card-container-game-result-player-number-3"
-        >15</span
+        >{{ playerNumbers[2] }}</span
       >
       <span
         class="dark-jackify-card-container-game-result-player-number dark-jackify-card-container-game-result-player-number-4"
-        >7</span
+        >{{ playerNumbers[3] }}</span
       >
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    dealerNumber: Number,
+    playerNumbers: Array,
+  },
+};
 </script>
 
 <style lang="scss">
