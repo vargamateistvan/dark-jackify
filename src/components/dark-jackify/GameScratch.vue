@@ -118,7 +118,7 @@ export default {
     },
     handlePercentage(filledInPixels) {
       filledInPixels = filledInPixels || 0;
-      if (filledInPixels > 70) {
+      if (filledInPixels > 80) {
         if (!this.resultShown) {
           this.showResult();
           this.resultShown = true;
