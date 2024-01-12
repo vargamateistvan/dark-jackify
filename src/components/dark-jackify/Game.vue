@@ -36,11 +36,11 @@ export default {
   },
   methods: {
     generateNumbers() {
-      const playerNumbers = [];
+      const playerNumbers = new Set();
       const dealerNumber = Math.floor(Math.random() * 13) + 9; // Generates a random integer between 9 and 21 for the dealer
       const isSmallerThanDealerNumber = Math.random() < 0.7;
 
-      for (let i = 0; i < 4; i++) {
+      while (playerNumbers.size < 4) {
         const randomNumber = Math.floor(Math.random() * 20) + 2; // Generates a random integer between 2 and 21 for the player
 
         // If 30% chance, make sure the number is smaller than the dealer number
@@ -48,27 +48,40 @@ export default {
           ? Math.floor(Math.random() * dealerNumber) + 2 // Generates a random integer between 2 and dealer number
           : randomNumber;
 
-        playerNumbers.push(generatedNumber);
+        playerNumbers.add(generatedNumber);
       }
 
       return { playerNumbers: Array.from(playerNumbers), dealerNumber };
     },
     generateBonusGameNumbers() {
-      const numbers = [];
-
-      for (let i = 0; i < 3; i++) {
-        const randomNumber = Math.floor(Math.random() * 20) + 2; // Generates a random integer between 2 and 21 (inclusive)
-        numbers.push(randomNumber);
-      }
-
       // Check if 50% chance for the sum to equal 21 if a player lost the main game
       if (!this.isPlayerWins && Math.random() < 0.5) {
-        const adjustedIndex = Math.floor(Math.random() * 3);
-        const difference = 21 - numbers.reduce((sum, num) => sum + num, 0);
-        numbers[adjustedIndex] += difference;
+        return this.generateWinnerBonusNumbers();
       }
 
-      return numbers;
+      const numbersSet = new Set();
+
+      while (numbersSet.size < 3) {
+        const randomNumber = Math.floor(Math.random() * 21) + 2;
+        numbersSet.add(randomNumber);
+      }
+
+      return Array.from(numbersSet);
+    },
+    generateWinnerBonusNumbers() {
+      let numbers;
+
+      // Continue generating until valid distinct numbers are found
+      do {
+        numbers = new Set();
+
+        while (numbers.size < 3) {
+          const randomNumber = Math.floor(Math.random() * 21) + 2;
+          numbers.add(randomNumber);
+        }
+      } while (Array.from(numbers).reduce((sum, num) => sum + num, 0) !== 21);
+
+      return Array.from(numbers);
     },
     getDealerWin(playerNumbers, dealerNumber) {
       return playerNumbers.every((num) => num <= dealerNumber);
