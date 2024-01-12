@@ -12,6 +12,7 @@
 
 <script>
 import Scratch from "@/assets/images/game-scratch.svg?raw";
+import scratchingSound from "@/assets/sound/scratching.mp3";
 
 export default {
   props: {
@@ -27,6 +28,7 @@ export default {
       canvas: null,
       brush: null,
       resultShown: false,
+      sound: new Audio(scratchingSound),
     };
   },
   methods: {
@@ -124,6 +126,7 @@ export default {
     startScratch(e) {
       this.isScratching = true;
       this.lastPoint = this.getMouse(e, this.canvas);
+      this.sound.play();
     },
     scratch(e) {
       if (!this.isScratching) {
