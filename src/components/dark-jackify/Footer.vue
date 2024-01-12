@@ -1,7 +1,7 @@
 <template>
-  <div class="dark-jackify-card-footer">
+  <div class="dark-jackify-footer">
     <img
-      class="dark-jackify-card-footer-description"
+      class="dark-jackify-footer-description"
       src="@/assets/images/game-description.svg"
       alt="Game Description"
     />
@@ -13,7 +13,7 @@ export default {};
 </script>
 
 <style lang="scss">
-.dark-jackify-card-footer {
+.dark-jackify-footer {
   position: absolute;
   user-select: none;
 

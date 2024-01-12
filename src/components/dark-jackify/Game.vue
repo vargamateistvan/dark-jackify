@@ -1,5 +1,5 @@
 <template>
-  <div class="dark-jackify-card-container-game">
+  <div class="dark-jackify-game">
     <game-scratch
       :isPlayerWins="isPlayerWins"
       :isBonusGameWins="isBonusGameWin"
@@ -137,7 +137,7 @@ export default {
 </script>
 
 <style lang="scss">
-.dark-jackify-card-container-game {
+.dark-jackify-game {
   height: 430px;
   margin: 5px;
   border-bottom-left-radius: 190px;

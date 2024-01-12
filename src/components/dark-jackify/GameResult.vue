@@ -52,7 +52,7 @@
     </div>
     <div class="dark-jackify-game-result-bonus">
       <img
-        class="dark-jackify-card-footer-bonus-game-spark"
+        class="dark-jackify-footer-bonus-game-spark"
         src="@/assets/images/spark.svg"
         alt="Spark"
       />
