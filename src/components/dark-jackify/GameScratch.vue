@@ -6,6 +6,11 @@
 import Scratch from "@/assets/images/game-scratch.svg?raw";
 
 export default {
+  props: {
+    isPlayerWins: Boolean,
+    isBonusGameWins: Boolean,
+    prize: Number,
+  },
   data() {
     return {
       isScratching: false,
@@ -13,6 +18,7 @@ export default {
       ctx: null,
       canvas: null,
       brush: null,
+      resultShown: false,
     };
   },
   methods: {
@@ -111,9 +117,11 @@ export default {
     },
     handlePercentage(filledInPixels) {
       filledInPixels = filledInPixels || 0;
-      console.log(filledInPixels + "%");
       if (filledInPixels > 70) {
-        // this.canvas.parentNode.removeChild(this.canvas);
+        if (!this.resultShown) {
+          this.showResult();
+          this.resultShown = true;
+        }
       }
     },
     startScratch(e) {
@@ -145,6 +153,15 @@ export default {
     },
     stopScratch(e) {
       this.isScratching = false;
+    },
+    showResult() {
+      if (this.isPlayerWins) {
+        return alert(`Nyertél ${this.prize?.toLocaleString("en")} Ft-ot!`);
+      }
+
+      if (this.isBonusGameWins) {
+        return alert(`Nyertél 1,000 Ft-ot!`);
+      }
     },
   },
   mounted() {

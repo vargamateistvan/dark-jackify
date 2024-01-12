@@ -1,6 +1,10 @@
 <template>
   <div class="dark-jackify-card-container-game">
-    <game-scratch></game-scratch>
+    <game-scratch
+      :isPlayerWins="isPlayerWins"
+      :isBonusGameWins="isBonusGameWin"
+      :prize="prize"
+    ></game-scratch>
     <game-result
       class="dark-jackify-card-container-game-result"
       :dealerNumber="dealerNumber"
@@ -27,27 +31,33 @@ export default {
     };
   },
   components: { GameResult, GameScratch },
+  computed: {
+    isBonusGameWins() {
+      const sum = this.bonusNumbers.reduce((acc, num) => acc + num, 0);
+      return sum === 21;
+    },
+  },
   methods: {
     generateNumbers(percent) {
-      const playerNumbers = new Set();
+      const playerNumbers = [];
       const dealerNumber = Math.floor(Math.random() * 13) + 9; // Generates a random integer between 9 and 21 for the dealer
 
       for (let i = 0; i < 4; i++) {
         const randomNumber = Math.floor(Math.random() * 20) + 2; // Generates a random integer between 2 and 21 for the player
-        const isSmallerThanDealerNumber = Math.random() < 0.3;
+        const isSmallerThanDealerNumber = Math.random() < 1 - percent;
 
         // If 30% chance, make sure the number is smaller than the dealer number
         const generatedNumber = isSmallerThanDealerNumber
-          ? Math.floor(Math.random() * dealerNumber) + 2 // Generates a random integer between 2 and specificNumber
+          ? Math.floor(Math.random() * dealerNumber) + 2 // Generates a random integer between 2 and dealer number
           : randomNumber;
 
-        playerNumbers.add(generatedNumber);
+        playerNumbers.push(generatedNumber);
       }
 
       return { playerNumbers: Array.from(playerNumbers), dealerNumber };
     },
     isDealerWin(playerNumbers, dealerNumber) {
-      return playerNumbers.every((num) => dealerNumber > num);
+      return playerNumbers.every((num) => dealerNumber + 1 > num);
     },
     generateBonusGameNumbers() {
       const numbers = [];
@@ -74,10 +84,6 @@ export default {
     },
     generatedNumber(min = 2, max = 21) {
       return Math.floor(Math.random() * (max - 1)) + min;
-    },
-    checkBonusGameWin() {
-      const sum = this.bonusNumbers.reduce((acc, num) => acc + num, 0);
-      return sum === 21;
     },
     getPrize() {
       if (this.isPlayerWins) {
@@ -132,9 +138,7 @@ export default {
 
       // Display results
       console.log(this.isPlayerWins ? "Player wins!" : "Dealer wins!");
-      console.log(
-        this.checkBonusGameWin() ? "Bonus game wins" : "Bonus game lost"
-      );
+      console.log(this.isBonusGameWins ? "Bonus game wins" : "Bonus game lost");
     },
   },
   mounted() {
