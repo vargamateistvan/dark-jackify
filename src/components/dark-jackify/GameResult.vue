@@ -181,7 +181,7 @@ export default {
 
     &-dealer {
       width: 198px;
-      height: 146px;
+      height: 130px;
       border: 2px solid black;
       border-bottom-left-radius: 225px;
       border-bottom-right-radius: 225px;
@@ -260,12 +260,12 @@ export default {
 
     &-numbers {
       width: 135px;
-      height: 130px;
+      height: 117px;
       background: #e9ebec;
       position: absolute;
       display: flex;
-      margin-left: 60px;
-      margin-top: -180px;
+      margin-left: 48px;
+      margin-top: -175px;
       border-bottom-left-radius: 50px;
       border-bottom-right-radius: 50px;
       border-top-left-radius: 50px;
@@ -297,23 +297,23 @@ export default {
       }
 
       &-text-2 {
-        margin-left: -36px;
+        margin-left: -55px;
         margin-top: 40px;
       }
 
       &-number-1 {
-        margin-left: -40px;
-        margin-top: 65px;
+        margin-left: -75px;
+        margin-top: 55px;
       }
 
       &-number-2 {
-        margin-left: 10px;
-        margin-top: 15px;
+        margin-left: 0px;
+        margin-top: 8px;
       }
 
       &-number-3 {
-        margin-left: 75px;
-        margin-top: 65px;
+        margin-left: 70px;
+        margin-top: 55px;
         position: absolute;
       }
     }

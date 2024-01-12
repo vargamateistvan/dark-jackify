@@ -6,7 +6,6 @@
       :prize="prize"
     ></game-scratch>
     <game-result
-      class="dark-jackify-card-container-game-result"
       :dealerNumber="dealerNumber"
       :playerNumbers="playerNumbers"
       :bonusNumbers="bonusNumbers"
@@ -153,15 +152,6 @@ export default {
   margin: 5px;
   border-bottom-left-radius: 190px;
   border-bottom-right-radius: 190px;
-
-  #dark-jackify-game {
-    width: 397px;
-    height: 430px;
-    border-bottom-left-radius: 165px;
-    border-bottom-right-radius: 165px;
-    z-index: 2;
-    position: sticky;
-  }
 
   #dark-jackify-game-scratch {
     visibility: hidden;
