@@ -17,6 +17,7 @@
 <script>
 import GameResult from "./GameResult.vue";
 import GameScratch from "./GameScratch.vue";
+import { addStatistics } from "../../utils/localStorage";
 
 export default {
   data() {
@@ -131,6 +132,13 @@ export default {
         this.bonusNumbers
       );
       console.log("Prize", this.prize);
+
+      // Save Statistics
+      addStatistics({
+        isPlayerWins: this.isPlayerWins,
+        isBonusGameWins: this.isBonusGameWins,
+        prize: this.prize,
+      });
     },
   },
   mounted() {
