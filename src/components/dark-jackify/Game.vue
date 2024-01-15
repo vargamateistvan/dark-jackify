@@ -89,21 +89,21 @@ export default {
     },
     getPrize() {
       let prize = 500;
-      const chance = Math.random();
+      const chance = Math.floor(Math.random() * 86) / 100;
 
-      if (chance < 0.25) {
+      if (chance > 0.3) {
         prize = 1000;
       }
 
-      if (chance < 0.15) {
+      if (chance > 0.55) {
         prize = 5000;
       }
 
-      if (chance < 0.1) {
+      if (chance > 0.7) {
         prize = 10000;
       }
 
-      if (chance < 0.05) {
+      if (chance > 0.8) {
         prize = 100000;
       }
 
