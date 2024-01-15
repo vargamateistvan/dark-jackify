@@ -50,10 +50,10 @@ import { getStatistics } from "../../utils/localStorage";
 export default {
   data() {
     return {
-      statistics: null,
-      statisticsCount: null,
-      winrate: null,
-      bonusGameWinrate: null,
+      statistics: [],
+      statisticsCount: 0,
+      winrate: 0,
+      bonusGameWinrate: 0,
       prizeRates: {
         500: 0,
         1000: 0,
