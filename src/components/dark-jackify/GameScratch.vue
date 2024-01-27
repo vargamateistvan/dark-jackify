@@ -174,15 +174,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss">
-#dark-jackify-game {
-  width: 397px;
-  height: 426px;
-  border-bottom-left-radius: 165px;
-  border-bottom-right-radius: 165px;
-  z-index: 2;
-  position: sticky;
-  margin-left: 5px;
-}
-</style>

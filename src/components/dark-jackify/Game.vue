@@ -25,16 +25,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss">
-.dark-jackify-game {
-  height: 430px;
-  margin: 5px;
-  border-bottom-left-radius: 190px;
-  border-bottom-right-radius: 190px;
-
-  #dark-jackify-game-scratch {
-    visibility: hidden;
-  }
-}
-</style>

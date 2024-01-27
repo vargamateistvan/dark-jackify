@@ -1,0 +1,286 @@
+#dark-jackify-game {
+  width: 397px;
+  height: 426px;
+  border-bottom-left-radius: 165px;
+  border-bottom-right-radius: 165px;
+  z-index: 2;
+  position: sticky;
+  margin-left: 5px;
+}
+
+.dark-jackify {
+  width: 412px;
+  height: 752px;
+  background: linear-gradient(180deg, #ed213a 0%, #93291e 100%);
+  padding: 30px;
+
+  &-container {
+    width: 100%;
+    height: 100%;
+    background: #2a2d34;
+    border-radius: 15px;
+  }
+
+  &-header {
+    &-cards {
+      display: flex;
+      height: 223px;
+      z-index: 1;
+
+      &-ace {
+        margin-top: 5px;
+        margin-left: 30px;
+        height: 242px;
+      }
+
+      &-jack {
+        margin-top: 60px;
+        margin-left: -60px;
+        height: 246px;
+      }
+    }
+
+    &-title {
+      height: 112px;
+      margin: 5px;
+      background: white;
+      z-index: 2;
+      position: relative;
+      user-select: none;
+
+      font-size: 80px;
+      font-family: Jockey One;
+      font-weight: 400;
+      text-transform: uppercase;
+      word-wrap: break-word;
+      text-shadow: 4px 0px 0px #000;
+
+      &:before {
+        content: "";
+        position: absolute;
+        left: 40px;
+        width: 80%;
+        border-top: solid 8px #c4000c;
+        box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.75);
+      }
+
+      &-green {
+        color: #209740;
+      }
+
+      &-red {
+        color: #c4000c;
+      }
+    }
+  }
+
+  &-game {
+    height: 430px;
+    margin: 5px;
+    border-bottom-left-radius: 190px;
+    border-bottom-right-radius: 190px;
+
+    #dark-jackify-game-scratch {
+      visibility: hidden;
+    }
+
+    &-result {
+      user-select: none;
+      position: relative;
+
+      &-number-text {
+        color: #000;
+        text-align: center;
+        font-family: Inconsolata;
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 10px;
+      }
+
+      &-main {
+        height: 235px;
+        width: 380px;
+        margin: 1px;
+        margin-top: -435px;
+        background: #e9ebec;
+        border: 10px solid #209740;
+        border-bottom-left-radius: 190px;
+        border-bottom-right-radius: 190px;
+        z-index: 1;
+        position: relative;
+
+        &:before {
+          content: "";
+          position: absolute;
+          left: 91px;
+          width: 53%;
+          border-top: solid 10px #c4000c;
+          margin-top: -10px;
+        }
+
+        &-dealer {
+          width: 198px;
+          height: 130px;
+          border: 2px solid black;
+          border-bottom-left-radius: 225px;
+          border-bottom-right-radius: 225px;
+          margin-left: 90px;
+          position: absolute;
+
+          &-prize {
+            margin-top: 10px;
+            color: #000;
+            text-align: center;
+            font-family: Inconsolata;
+            font-size: 15px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 10px;
+          }
+
+          &-number {
+            margin-left: 5px;
+            margin-top: 20px;
+
+            color: #000;
+            text-align: center;
+            font-family: Inconsolata;
+            font-size: 40px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 40px;
+          }
+
+          &-text {
+            margin-top: -5px;
+          }
+        }
+
+        &-player {
+          display: flex;
+          justify-content: space-around;
+
+          &-number {
+            color: #000;
+            text-align: center;
+            font-family: Inconsolata;
+            font-size: 40px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 40px;
+          }
+
+          &-number-1 {
+            margin-left: 0px;
+            margin-top: 10px;
+          }
+
+          &-number-2 {
+            margin-left: 0px;
+            margin-top: 130px;
+          }
+
+          &-number-3 {
+            margin-left: 115px;
+            margin-top: 130px;
+          }
+
+          &-number-4 {
+            margin-left: 0px;
+            margin-top: 10px;
+          }
+        }
+      }
+
+      &-bonus {
+        margin-left: 185px;
+        margin-top: -90px;
+        position: relative;
+
+        &-numbers {
+          width: 145px;
+          height: 117px;
+          background: #e9ebec;
+          position: absolute;
+          display: flex;
+          margin-left: 48px;
+          margin-top: -175px;
+          border-bottom-left-radius: 50px;
+          border-bottom-right-radius: 50px;
+          border-top-left-radius: 50px;
+          border-top-right-radius: 50px;
+          display: flex;
+          justify-content: space-around;
+
+          color: #000;
+          text-align: center;
+          font-family: Inconsolata;
+          font-size: 40px;
+          font-style: normal;
+          font-weight: 700;
+          line-height: 40px;
+
+          &-text {
+            color: #000;
+            text-align: center;
+            font-family: Inconsolata;
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 10px;
+          }
+
+          &-text-1 {
+            margin-left: 15px;
+            margin-top: 25px;
+          }
+
+          &-text-2 {
+            margin-left: -55px;
+            margin-top: 40px;
+          }
+
+          &-number-1 {
+            margin-left: -75px;
+            margin-top: 55px;
+          }
+
+          &-number-2 {
+            margin-left: 0px;
+            margin-top: 8px;
+          }
+
+          &-number-3 {
+            margin-left: 70px;
+            margin-top: 55px;
+            position: absolute;
+          }
+        }
+      }
+    }
+  }
+
+  &-footer {
+    position: absolute;
+    user-select: none;
+
+    margin-left: 15px;
+    margin-top: -255px;
+  }
+
+  &-statistics {
+    margin-top: 10px;
+
+    &-text {
+      margin-top: 10px;
+      color: #000;
+      text-align: center;
+      font-family: Inconsolata;
+      font-size: 15px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 10px;
+    }
+  }
+}
