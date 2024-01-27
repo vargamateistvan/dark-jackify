@@ -13,15 +13,12 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 import Scratch from "@/assets/images/game-scratch.svg?raw";
 import scratchingSound from "@/assets/sound/scratching.mp3";
 
 export default {
-  props: {
-    isPlayerWins: Boolean,
-    isBonusGameWins: Boolean,
-    prize: Number,
-  },
   data() {
     return {
       isScratching: false,
@@ -32,6 +29,9 @@ export default {
       resultShown: false,
       sound: new Audio(scratchingSound),
     };
+  },
+  computed: {
+    ...mapGetters(["isPlayerWins", "isBonusGameWins", "prize"]),
   },
   methods: {
     renderHTMLToCanvas() {
