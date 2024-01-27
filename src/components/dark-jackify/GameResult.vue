@@ -91,14 +91,12 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import { getNumberText, getPrizeText } from "../../utils/numbersToText";
 
 export default {
-  props: {
-    dealerNumber: Number,
-    playerNumbers: Array,
-    bonusNumbers: Array,
-    prize: Number,
+  computed: {
+    ...mapGetters(["dealerNumber", "playerNumbers", "bonusNumbers", "prize"]),
   },
   methods: { getNumberText, getPrizeText },
 };
