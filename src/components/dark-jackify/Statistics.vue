@@ -96,20 +96,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss">
-.dark-jackify-statistics {
-  margin-top: 10px;
-
-  &-text {
-    margin-top: 10px;
-    color: #000;
-    text-align: center;
-    font-family: Inconsolata;
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 10px;
-  }
-}
-</style>

@@ -24,19 +24,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped>
-.dark-jackify {
-  width: 412px;
-  height: 752px;
-  background: linear-gradient(180deg, #ed213a 0%, #93291e 100%);
-  padding: 30px;
-
-  &-container {
-    width: 100%;
-    height: 100%;
-    background: #2a2d34;
-    border-radius: 15px;
-  }
-}
-</style>

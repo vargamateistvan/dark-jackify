@@ -7,17 +7,3 @@
     />
   </div>
 </template>
-
-<script>
-export default {};
-</script>
-
-<style lang="scss">
-.dark-jackify-footer {
-  position: absolute;
-  user-select: none;
-
-  margin-left: 15px;
-  margin-top: -255px;
-}
-</style>
